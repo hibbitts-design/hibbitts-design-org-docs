@@ -1,4 +1,4 @@
-# MultiCourse Hub
+# Open MultiCourse Hub
 
 With the v2.7 release of the Grav Open Course Hub skeleton package [MultiCourse Hubs](https://demo.hibbittsdesign.org/grav-skeleton-open-matter-multi-course-hub-site/) are now supported.
 
