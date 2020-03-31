@@ -14,7 +14,22 @@
     --cover-button-color                   : #666666;
 }
 
-/* Links */
---link-border-bottom                : ;
---link-border-bottom--hover         : ;
---link-color                        : ;
+.responsive-wrap iframe{
+  max-width: 100%;
+}
+
+.markdown-section .button {
+  cursor: pointer;
+  color: white;
+  height: 38px;
+  padding: 8px;
+  background-color: var(--theme-color);
+  text-decoration: none;
+  border-radius: .25rem;
+}
+
+.markdown-section a.button {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}

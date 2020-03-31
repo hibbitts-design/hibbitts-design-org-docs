@@ -8,4 +8,4 @@
 
 Explore a sample Open Presentation Hub site at [demo.hibbittsdesign.org/grav-skeleton-open-matter-presentation-hub-site](https://demo.hibbittsdesign.org/grav-skeleton-open-matter-presentation-hub-site/)
 
-[Download Open Presentation Hub](http://hibbittsdesign.org/blog/downloads/grav-skeleton-open-matter-presentation-hub-site.zip?classes=button)
+[Download Open Presentation Hub](http://hibbittsdesign.org/blog/downloads/grav-skeleton-open-matter-presentation-hub-site.zip ':class=button')
