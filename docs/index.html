@@ -48,6 +48,11 @@
       loadSidebar: true,
       loadNavbar: true,
       homepage: '01.overview/overview.md',
+      search: {
+        depth      : 3,
+        noData     : 'No matches found.',
+        placeholder: 'Enter search text here...'
+      },
       plugins: [
         function (hook, vm) {
           hook.beforeEach(function (html) {
