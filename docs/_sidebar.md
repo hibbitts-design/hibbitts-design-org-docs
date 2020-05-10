@@ -16,7 +16,7 @@
   - [Share Your Feedback](02.opencoursehub/share-your-feedback.md)
 - Open Presentation Hub
   - [Overview](03.openpresentationhub/overview.md)
-  - [Benefits](03.openpresentationhub/overview.md)
+  - [Benefits](03.openpresentationhub/benefits.md)
   - [Workflow Diagram](03.openpresentationhub/work-flow.md)
   - [Get Ready and Download](03.openpresentationhub/getting-ready.md)
   - [Install and Configuration Video](03.openpresentationhub/install-configure-video.md)
