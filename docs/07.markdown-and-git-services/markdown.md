@@ -14,6 +14,5 @@
 
 ### Markdown-based Presentation Tools
 
-* [GitPitch](https://gitpitch.com/)
 * [Deckset (Mac app)](https://www.deckset.com/)
 * [Grav Presentation Plugin](https://github.com/OleVik/grav-plugin-presentation)
