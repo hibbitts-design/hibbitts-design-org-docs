@@ -78,16 +78,6 @@ git_sync_repo_link: https://github.com/hibbitts-design/grav-skeleton-course-hub/
 
 ### Built-in ShortCodes
 
-**iFrame**
-
-This ShortCode embeds an iFrame.
-
-```
-[iframe url="http://getgrav.org"]
-[iframe url="http://getgrav.org" aspectratio="4by3"] (default)
-[iframe url="http://getgrav.org" aspectratio="16by9"]
-```
-
 **Badge**
 
 This ShortCode displays a badge, with an optional link.
@@ -144,6 +134,16 @@ When using the `[h5p id=""]` format the H5P Content Embed Source URL must be set
 Example (image)
 
 ![](images/h5p.png)
+
+**iFrame**
+
+This ShortCode embeds an iFrame.
+
+```
+[iframe url="http://getgrav.org"]
+[iframe url="http://getgrav.org" aspectratio="4by3"] (default)
+[iframe url="http://getgrav.org" aspectratio="16by9"]
+```
 
 **Markdown File**
 
