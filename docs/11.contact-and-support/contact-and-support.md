@@ -1,4 +1,4 @@
-## Contact and Support
+# Contact and Support
 
 - Follow [@hibbittsdesign@mastodon.social](https://mastodon.social/@hibbittsdesign) on Mastodon for updates, or subscribe via [RSS feed](https://mastodon.social/@hibbittsdesign.rss)
 - 👩🏻‍💻🧑🏻‍💻 Join the [Grav Discord](https://discord.gg/5VhYVkR) and DM @paulhibbitts
