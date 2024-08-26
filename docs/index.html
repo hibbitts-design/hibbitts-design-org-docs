@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://docsify-preview-otbe69cjj-docsifyjs.vercel.app/dist/themes/addons/core-dark.min.css" media="(prefers-color-scheme: dark)"/>
 
     <!-- Custom CSS -->
-    <!-- <link rel="stylesheet" href="custom.css" /> -->
+    <link rel="stylesheet" href="custom.css" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-19424343-30"></script>
@@ -32,6 +32,11 @@
     <script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
     <script>
       window.$docsify = {
+        // Sidebar expand and collapse
+        alias: {
+          '/.*/_sidebar.md': '/_sidebar.md',
+          '/.*/_navbar.md': '/_navbar.md',
+        },
         name: 'Grav CMS in Open Education and Publishing',
         repo: 'https://github.com/hibbitts-design/hibbitts-design-org-docs',
         loadSidebar: true,
@@ -66,6 +71,7 @@
                 + '<a href="https://docsify.js.org" target="_blank" style="color: inherit; font-weight: normal;">Powered by docsify</a>'
             })
 
+            // Sidebar expand and collapse
             hook.doneEach(function() {
               document.querySelectorAll(".sidebar-nav > ul > li").forEach(
                 function(node, index, nodelist) {

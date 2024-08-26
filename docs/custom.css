@@ -1,3 +1,4 @@
+/* Sidebar expand and collapse */
 .group:is(:is(:is(.app-nav-merged,.sidebar-nav)>ul)>li):has(+:not(.group)), .group:is(:is(:is(.app-nav-merged,.sidebar-nav)>ul)>li):last-child {
   border-bottom: var(--sidebar-group-border);
   padding-bottom: 14px;
