@@ -50,12 +50,18 @@
         span.innerHTML = node.firstChild.data;
         span.onclick = function() {
           var ul = span.nextElementSibling;
-          if (ul.style.display === "none") {
+          var isCurrentlyCollapsed = (ul.style.display === "none");
+          
+          // Close all sections first
+          document.querySelectorAll(".sidebar-nav > ul > li.sidebar-group").forEach(function(otherNode) {
+            otherNode.querySelector('ul').style.display = "none";
+            otherNode.classList.remove('expanded');
+          });
+          
+          // Then open this section if it was collapsed
+          if (isCurrentlyCollapsed) {
             ul.style.display = "block";
             node.classList.add('expanded');
-          } else {
-            ul.style.display = "none";
-            node.classList.remove('expanded');
           }
         };
         node.firstChild.replaceWith(span);
