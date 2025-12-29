@@ -24,9 +24,16 @@
               linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px);
         }
         
-        .sidebar-nav > ul > li.sidebar-group > span:hover {
+        .sidebar-nav > ul > li.sidebar-group > span:hover,
+        .sidebar-nav > ul > li.sidebar-group > span:focus {
           text-decoration-color: var(--sidebar-link-color-active);
           translate: 0;
+          outline: none;
+        }
+        
+        .sidebar-nav > ul > li.sidebar-group > span:focus-visible {
+          outline: 2px solid var(--theme-color, #42b983);
+          outline-offset: 2px;
         }
         
         .sidebar-nav > ul > li.sidebar-group.expanded > span {
@@ -40,30 +47,54 @@
     });
     
     hook.doneEach(function() {
-      document.querySelectorAll(".sidebar-nav > ul > li").forEach(function(node) {
+      document.querySelectorAll(".sidebar-nav > ul > li").forEach(function(node, index) {
         // Skip if already processed
         if (node.classList.contains('sidebar-group')) {
           return;
         }
         
         var span = document.createElement("span");
+        var ul = node.querySelector('ul');
+        var sectionId = 'sidebar-section-' + index;
+        
         span.innerHTML = node.firstChild.data;
-        span.onclick = function() {
-          var ul = span.nextElementSibling;
+        span.setAttribute('role', 'button');
+        span.setAttribute('tabindex', '0');
+        span.setAttribute('aria-expanded', 'false');
+        span.setAttribute('aria-controls', sectionId);
+        
+        if (ul) {
+          ul.id = sectionId;
+        }
+        
+        var toggleSection = function() {
           var isCurrentlyCollapsed = (ul.style.display === "none");
           
           // Close all sections first
           document.querySelectorAll(".sidebar-nav > ul > li.sidebar-group").forEach(function(otherNode) {
-            otherNode.querySelector('ul').style.display = "none";
+            var otherUl = otherNode.querySelector('ul');
+            var otherSpan = otherNode.querySelector('span[role="button"]');
+            otherUl.style.display = "none";
             otherNode.classList.remove('expanded');
+            otherSpan.setAttribute('aria-expanded', 'false');
           });
           
           // Then open this section if it was collapsed
           if (isCurrentlyCollapsed) {
             ul.style.display = "block";
             node.classList.add('expanded');
+            span.setAttribute('aria-expanded', 'true');
           }
         };
+        
+        span.onclick = toggleSection;
+        span.onkeydown = function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleSection();
+          }
+        };
+        
         node.firstChild.replaceWith(span);
         node.lastChild.style.display = "none";
         node.classList.add('sidebar-group');
@@ -72,7 +103,12 @@
       var active = document.querySelector(".sidebar-nav li.active");
       if (active) {
         active.parentElement.style.display = "block";
-        active.parentElement.parentElement.classList.add('expanded');
+        var parentNode = active.parentElement.parentElement;
+        parentNode.classList.add('expanded');
+        var parentSpan = parentNode.querySelector('span[role="button"]');
+        if (parentSpan) {
+          parentSpan.setAttribute('aria-expanded', 'true');
+        }
       }
     });
   }
