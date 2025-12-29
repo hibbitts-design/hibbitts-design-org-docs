@@ -12,7 +12,6 @@
   - [Integrating Grav with Canvas LMS](02.opencoursehub/integrating-grav-with-canvas-lms.md)
   - [Integrating Grav with Moodle](02.opencoursehub/integrating-grav-with-moodle.md)
   - [MultiCourse Hub](02.opencoursehub/multicourse-hub.md)
-  - [Developing Locally with MAMP](02.opencoursehub/developing-locally-using-MAMP.md)
   - [Share Your Feedback](02.opencoursehub/share-your-feedback.md)
 - Open Publishing Space
   - [Overview](04.openpublishingspace/overview.md)
