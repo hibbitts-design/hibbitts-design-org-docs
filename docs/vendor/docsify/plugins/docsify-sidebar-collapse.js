@@ -13,10 +13,20 @@
           display: block;
           padding-right: calc(var(--_sidebar-inset, 20px) + 15px);
           border-radius: var(--border-radius);
+          text-decoration-line: underline;
+          text-decoration-style: solid;
+          text-decoration-thickness: var(--link-underline-thickness, 2px);
+          text-decoration-color: transparent;
+          text-underline-offset: 2px;
           background: no-repeat calc(100% - var(--_sidebar-inset, 20px)) calc(50% - 2.5px) / 6px 5px
               linear-gradient(45deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px),
             no-repeat calc(100% - var(--_sidebar-inset, 20px)) calc(50% + 2.5px) / 6px 5px
               linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px);
+        }
+        
+        .sidebar-nav > ul > li.sidebar-group > span:hover {
+          text-decoration-color: var(--sidebar-link-color-active);
+          translate: 0;
         }
         
         .sidebar-nav > ul > li.sidebar-group.expanded > span {
@@ -31,6 +41,11 @@
     
     hook.doneEach(function() {
       document.querySelectorAll(".sidebar-nav > ul > li").forEach(function(node) {
+        // Skip if already processed
+        if (node.classList.contains('sidebar-group')) {
+          return;
+        }
+        
         var span = document.createElement("span");
         span.innerHTML = node.firstChild.data;
         span.onclick = function() {
