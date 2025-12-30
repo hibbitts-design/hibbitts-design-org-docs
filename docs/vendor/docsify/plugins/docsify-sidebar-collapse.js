@@ -30,16 +30,18 @@
           -webkit-tap-highlight-color: transparent;
         }
         
-        .sidebar-nav > ul > li.sidebar-group > span:active {
-          background-color: rgba(11, 133, 215, 0.1);
+        @media (hover: none) {
+          .sidebar-nav > ul > li.sidebar-group > span:active {
+            background-color: rgba(11, 133, 215, 0.1);
+          }
+          
+          .sidebar-nav > ul > li.sidebar-group > ul > li > a:active {
+            background-color: rgba(11, 133, 215, 0.1);
+          }
         }
         
         .sidebar-nav > ul > li.sidebar-group > ul > li > a {
           -webkit-tap-highlight-color: transparent;
-        }
-        
-        .sidebar-nav > ul > li.sidebar-group > ul > li > a:active {
-          background-color: rgba(11, 133, 215, 0.1);
         }
         
         .sidebar-nav > ul > li.sidebar-group.show-chevrons > span {
@@ -49,16 +51,18 @@
               linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px);
         }
         
-        .sidebar-nav > ul > li.sidebar-group.show-chevrons > span:active {
-          background-color: rgba(11, 133, 215, 0.1);
-          background-image: 
-            linear-gradient(45deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px),
-            linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px);
-          background-position: 
-            calc(100% - var(--_sidebar-inset, 20px)) calc(50% - 2.5px),
-            calc(100% - var(--_sidebar-inset, 20px)) calc(50% + 2.5px);
-          background-size: 6px 5px, 6px 5px;
-          background-repeat: no-repeat;
+        @media (hover: none) {
+          .sidebar-nav > ul > li.sidebar-group.show-chevrons > span:active {
+            background-color: rgba(11, 133, 215, 0.1);
+            background-image: 
+              linear-gradient(45deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px),
+              linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px);
+            background-position: 
+              calc(100% - var(--_sidebar-inset, 20px)) calc(50% - 2.5px),
+              calc(100% - var(--_sidebar-inset, 20px)) calc(50% + 2.5px);
+            background-size: 6px 5px, 6px 5px;
+            background-repeat: no-repeat;
+          }
         }
         
         .sidebar-nav > ul > li.sidebar-group > span:hover {
@@ -82,16 +86,18 @@
               linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px);
         }
         
-        .sidebar-nav > ul > li.sidebar-group.show-chevrons.expanded > span:active {
-          background-color: rgba(11, 133, 215, 0.1);
-          background-image: 
-            linear-gradient(225deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px),
-            linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px);
-          background-position: 
-            calc(100% - var(--_sidebar-inset, 20px) - 4px) center,
-            calc(100% - var(--_sidebar-inset, 20px) + 1px) center;
-          background-size: 5px 6px, 5px 6px;
-          background-repeat: no-repeat;
+        @media (hover: none) {
+          .sidebar-nav > ul > li.sidebar-group.show-chevrons.expanded > span:active {
+            background-color: rgba(11, 133, 215, 0.1);
+            background-image: 
+              linear-gradient(225deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px),
+              linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px);
+            background-position: 
+              calc(100% - var(--_sidebar-inset, 20px) - 4px) center,
+              calc(100% - var(--_sidebar-inset, 20px) + 1px) center;
+            background-size: 5px 6px, 5px 6px;
+            background-repeat: no-repeat;
+          }
         }
         
         .sidebar-nav > ul > li.sidebar-group ul.collapsed {
