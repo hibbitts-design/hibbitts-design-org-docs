@@ -11,6 +11,8 @@
       style.textContent = `
         .sidebar-nav > ul > li.sidebar-group {
           cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          tap-highlight-color: transparent;
         }
         
         .sidebar-nav > ul > li.sidebar-group > span {
