@@ -34,6 +34,14 @@
           background-color: rgba(11, 133, 215, 0.1);
         }
         
+        .sidebar-nav > ul > li.sidebar-group > ul > li > a {
+          -webkit-tap-highlight-color: transparent;
+        }
+        
+        .sidebar-nav > ul > li.sidebar-group > ul > li > a:active {
+          background-color: rgba(11, 133, 215, 0.1);
+        }
+        
         .sidebar-nav > ul > li.sidebar-group.show-chevrons > span {
           background: no-repeat calc(100% - var(--_sidebar-inset, 20px)) calc(50% - 2.5px) / 6px 5px
               linear-gradient(45deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px),
