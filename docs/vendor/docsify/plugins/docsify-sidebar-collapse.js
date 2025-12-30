@@ -24,10 +24,12 @@
               linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px);
         }
         
-        .sidebar-nav > ul > li.sidebar-group > span:hover,
-        .sidebar-nav > ul > li.sidebar-group > span:focus {
+        .sidebar-nav > ul > li.sidebar-group > span:hover {
           text-decoration-color: var(--sidebar-link-color-active);
           translate: 0;
+        }
+        
+        .sidebar-nav > ul > li.sidebar-group > span:focus {
           outline: none;
         }
         
