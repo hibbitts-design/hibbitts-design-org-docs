@@ -41,7 +41,7 @@
         }
         
         .sidebar-nav > ul > li.sidebar-group > span:focus-visible {
-          outline: 2px solid var(--theme-color, #42b983);
+          outline: 2px solid var(--theme-color, #0B85D7);
           outline-offset: 2px;
         }
         
