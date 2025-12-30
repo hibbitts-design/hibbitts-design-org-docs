@@ -2,6 +2,10 @@
 // Code generated/assisted by Anthropic Claude AI
 (function() {
   function sidebarCollapsePlugin(hook, vm) {
+    // Get configuration options
+    var options = vm.config.sidebarCollapse || {};
+    var showChevrons = options.showChevrons !== false; // Default true
+    
     hook.init(function() {
       var style = document.createElement('style');
       style.textContent = `
@@ -18,6 +22,9 @@
           text-decoration-thickness: var(--link-underline-thickness, 2px);
           text-decoration-color: transparent;
           text-underline-offset: 2px;
+        }
+        
+        .sidebar-nav > ul > li.sidebar-group.show-chevrons > span {
           background: no-repeat calc(100% - var(--_sidebar-inset, 20px)) calc(50% - 2.5px) / 6px 5px
               linear-gradient(45deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px),
             no-repeat calc(100% - var(--_sidebar-inset, 20px)) calc(50% + 2.5px) / 6px 5px
@@ -38,7 +45,7 @@
           outline-offset: 2px;
         }
         
-        .sidebar-nav > ul > li.sidebar-group.expanded > span {
+        .sidebar-nav > ul > li.sidebar-group.show-chevrons.expanded > span {
           background: no-repeat calc(100% - var(--_sidebar-inset, 20px) - 4px) center / 5px 6px
               linear-gradient(225deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px),
             no-repeat calc(100% - var(--_sidebar-inset, 20px) + 1px) center / 5px 6px
@@ -114,6 +121,11 @@
         node.firstChild.replaceWith(span);
         ul.classList.add('collapsed');
         node.classList.add('sidebar-group');
+        
+        // Add chevron class if enabled
+        if (showChevrons) {
+          node.classList.add('show-chevrons');
+        }
       });
       
       var active = document.querySelector(".sidebar-nav li.active");
