@@ -44,6 +44,10 @@
             no-repeat calc(100% - var(--_sidebar-inset, 20px) + 1px) center / 5px 6px
               linear-gradient(135deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px);
         }
+        
+        .sidebar-nav > ul > li.sidebar-group ul.collapsed {
+          display: none;
+        }
       `;
       document.head.appendChild(style);
     });
@@ -55,8 +59,14 @@
           return;
         }
         
-        var span = document.createElement("span");
         var ul = node.querySelector('ul');
+        
+        // Error handling: Skip if no child list exists
+        if (!ul) {
+          return;
+        }
+        
+        var span = document.createElement("span");
         var sectionId = 'sidebar-section-' + index;
         
         span.innerHTML = node.firstChild.data;
@@ -65,25 +75,29 @@
         span.setAttribute('aria-expanded', 'false');
         span.setAttribute('aria-controls', sectionId);
         
-        if (ul) {
-          ul.id = sectionId;
-        }
+        ul.id = sectionId;
         
         var toggleSection = function() {
-          var isCurrentlyCollapsed = (ul.style.display === "none");
+          var isCurrentlyCollapsed = ul.classList.contains('collapsed');
           
           // Close all sections first
           document.querySelectorAll(".sidebar-nav > ul > li.sidebar-group").forEach(function(otherNode) {
             var otherUl = otherNode.querySelector('ul');
             var otherSpan = otherNode.querySelector('span[role="button"]');
-            otherUl.style.display = "none";
+            
+            // Error handling: Skip if elements don't exist
+            if (!otherUl || !otherSpan) {
+              return;
+            }
+            
+            otherUl.classList.add('collapsed');
             otherNode.classList.remove('expanded');
             otherSpan.setAttribute('aria-expanded', 'false');
           });
           
           // Then open this section if it was collapsed
           if (isCurrentlyCollapsed) {
-            ul.style.display = "block";
+            ul.classList.remove('collapsed');
             node.classList.add('expanded');
             span.setAttribute('aria-expanded', 'true');
           }
@@ -98,17 +112,20 @@
         };
         
         node.firstChild.replaceWith(span);
-        node.lastChild.style.display = "none";
+        ul.classList.add('collapsed');
         node.classList.add('sidebar-group');
       });
       
       var active = document.querySelector(".sidebar-nav li.active");
       if (active) {
-        active.parentElement.style.display = "block";
-        var parentNode = active.parentElement.parentElement;
-        parentNode.classList.add('expanded');
+        var parentList = active.parentElement;
+        var parentNode = parentList.parentElement;
         var parentSpan = parentNode.querySelector('span[role="button"]');
-        if (parentSpan) {
+        
+        // Error handling: Only proceed if all elements exist
+        if (parentList && parentNode && parentSpan) {
+          parentList.classList.remove('collapsed');
+          parentNode.classList.add('expanded');
           parentSpan.setAttribute('aria-expanded', 'true');
         }
       }
