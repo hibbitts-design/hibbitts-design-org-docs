@@ -124,7 +124,8 @@
         var span = document.createElement("span");
         var sectionId = 'sidebar-section-' + index;
         
-        span.innerHTML = node.firstChild.data;
+        // Get section title text (handles both text nodes and elements like <strong>)
+        span.textContent = node.firstChild.textContent || node.firstChild.data || '';
         span.setAttribute('role', 'button');
         span.setAttribute('tabindex', '0');
         span.setAttribute('aria-expanded', 'false');
