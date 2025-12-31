@@ -1,9 +1,9 @@
 // Original source kindly shared by @Wsine on GitHub
 // Code generated/assisted by Anthropic Claude AI
 (function() {
-  function sidebarCollapsePlugin(hook, vm) {
+  function sidebarExpandCollapsePlugin(hook, vm) {
     // Get configuration options
-    var options = vm.config.sidebarCollapse || {};
+    var options = vm.config.sidebarExpandCollapse || {};
     var showChevrons = options.showChevrons !== false; // Default true
     
     hook.init(function() {
@@ -193,5 +193,5 @@
   }
 
   window.$docsify = window.$docsify || {};
-  window.$docsify.plugins = [].concat(sidebarCollapsePlugin, window.$docsify.plugins || []);
+  window.$docsify.plugins = [].concat(sidebarExpandCollapsePlugin, window.$docsify.plugins || []);
 })();
