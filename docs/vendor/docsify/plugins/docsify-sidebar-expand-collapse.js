@@ -5,6 +5,7 @@
     // Get configuration options
     var options = vm.config.sidebarExpandCollapse || {};
     var showChevrons = options.showChevrons !== false; // Default true
+    var accordion = options.accordion !== false; // Default true
     
     hook.init(function() {
       var style = document.createElement('style');
@@ -136,26 +137,38 @@
         var toggleSection = function() {
           var isCurrentlyCollapsed = ul.classList.contains('collapsed');
           
-          // Close all sections first
-          document.querySelectorAll(".sidebar-nav > ul > li.sidebar-group").forEach(function(otherNode) {
-            var otherUl = otherNode.querySelector('ul');
-            var otherSpan = otherNode.querySelector('span[role="button"]');
+          if (accordion) {
+            // Accordion mode: Close all sections first
+            document.querySelectorAll(".sidebar-nav > ul > li.sidebar-group").forEach(function(otherNode) {
+              var otherUl = otherNode.querySelector('ul');
+              var otherSpan = otherNode.querySelector('span[role="button"]');
+              
+              if (!otherUl || !otherSpan) {
+                return;
+              }
+              
+              otherUl.classList.add('collapsed');
+              otherNode.classList.remove('expanded');
+              otherSpan.setAttribute('aria-expanded', 'false');
+            });
             
-            // Error handling: Skip if elements don't exist
-            if (!otherUl || !otherSpan) {
-              return;
+            // Then open this section if it was collapsed
+            if (isCurrentlyCollapsed) {
+              ul.classList.remove('collapsed');
+              node.classList.add('expanded');
+              span.setAttribute('aria-expanded', 'true');
             }
-            
-            otherUl.classList.add('collapsed');
-            otherNode.classList.remove('expanded');
-            otherSpan.setAttribute('aria-expanded', 'false');
-          });
-          
-          // Then open this section if it was collapsed
-          if (isCurrentlyCollapsed) {
-            ul.classList.remove('collapsed');
-            node.classList.add('expanded');
-            span.setAttribute('aria-expanded', 'true');
+          } else {
+            // Non-accordion mode: Just toggle this section
+            if (isCurrentlyCollapsed) {
+              ul.classList.remove('collapsed');
+              node.classList.add('expanded');
+              span.setAttribute('aria-expanded', 'true');
+            } else {
+              ul.classList.add('collapsed');
+              node.classList.remove('expanded');
+              span.setAttribute('aria-expanded', 'false');
+            }
           }
         };
         
