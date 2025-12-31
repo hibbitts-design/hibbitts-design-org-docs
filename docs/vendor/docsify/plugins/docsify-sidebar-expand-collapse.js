@@ -2,10 +2,9 @@
 // Code generated/assisted by Anthropic Claude AI
 (function() {
   function sidebarExpandCollapsePlugin(hook, vm) {
-    // Get configuration options
     var options = vm.config.sidebarExpandCollapse || {};
-    var showChevrons = options.showChevrons !== false; // Default true
-    var accordion = options.accordion !== false; // Default true
+    var showChevrons = options.showChevrons !== false;
+    var accordion = options.accordion !== false;
     
     hook.init(function() {
       var style = document.createElement('style');
@@ -31,6 +30,7 @@
           -webkit-tap-highlight-color: transparent;
         }
         
+        /* Touch device feedback */
         @media (hover: none) {
           .sidebar-nav > ul > li.sidebar-group > span:active {
             background-color: rgba(11, 133, 215, 0.1);
@@ -110,14 +110,12 @@
     
     hook.doneEach(function() {
       document.querySelectorAll(".sidebar-nav > ul > li").forEach(function(node, index) {
-        // Skip if already processed
         if (node.classList.contains('sidebar-group')) {
           return;
         }
         
         var ul = node.querySelector('ul');
         
-        // Error handling: Skip if no child list exists
         if (!ul) {
           return;
         }
@@ -125,7 +123,7 @@
         var span = document.createElement("span");
         var sectionId = 'sidebar-section-' + index;
         
-        // Get section title text (handles both text nodes and elements like <strong>)
+        // Handles both text nodes and elements like <strong>
         span.textContent = node.firstChild.textContent || node.firstChild.data || '';
         span.setAttribute('role', 'button');
         span.setAttribute('tabindex', '0');
@@ -138,7 +136,7 @@
           var isCurrentlyCollapsed = ul.classList.contains('collapsed');
           
           if (accordion) {
-            // Accordion mode: Close all sections first
+            // Close all sections first
             document.querySelectorAll(".sidebar-nav > ul > li.sidebar-group").forEach(function(otherNode) {
               var otherUl = otherNode.querySelector('ul');
               var otherSpan = otherNode.querySelector('span[role="button"]');
@@ -152,14 +150,13 @@
               otherSpan.setAttribute('aria-expanded', 'false');
             });
             
-            // Then open this section if it was collapsed
             if (isCurrentlyCollapsed) {
               ul.classList.remove('collapsed');
               node.classList.add('expanded');
               span.setAttribute('aria-expanded', 'true');
             }
           } else {
-            // Non-accordion mode: Just toggle this section
+            // Toggle without closing other sections
             if (isCurrentlyCollapsed) {
               ul.classList.remove('collapsed');
               node.classList.add('expanded');
@@ -184,7 +181,6 @@
         ul.classList.add('collapsed');
         node.classList.add('sidebar-group');
         
-        // Add chevron class if enabled
         if (showChevrons) {
           node.classList.add('show-chevrons');
         }
@@ -196,7 +192,6 @@
         var parentNode = parentList.parentElement;
         var parentSpan = parentNode.querySelector('span[role="button"]');
         
-        // Error handling: Only proceed if all elements exist
         if (parentList && parentNode && parentSpan) {
           parentList.classList.remove('collapsed');
           parentNode.classList.add('expanded');
