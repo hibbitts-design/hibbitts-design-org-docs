@@ -1,13 +1,12 @@
 // Original source kindly shared by @Wsine on GitHub
 // Code generated/assisted by Anthropic Claude AI
-(function () {
+(function() {
   function sidebarExpandCollapsePlugin(hook, vm) {
     var options = vm.config.sidebarExpandCollapse || {};
-    var chevronPosition = options.chevronPosition || "right"; // 'right' or 'none'
     var accordion = options.accordion !== false;
-
-    hook.init(function () {
-      var style = document.createElement("style");
+    
+    hook.init(function() {
+      var style = document.createElement('style');
       style.textContent = `
         .sidebar-nav > ul > li.sidebar-group,
         .sidebar-nav > ul > li.sidebar-group > ul {
@@ -20,6 +19,7 @@
         
         .sidebar-nav > ul > li.sidebar-group > span {
           display: block;
+          padding-right: calc(var(--_sidebar-inset, 20px) + 15px);
           border-radius: var(--border-radius);
           text-decoration-line: underline;
           text-decoration-style: solid;
@@ -27,11 +27,6 @@
           text-decoration-color: transparent;
           text-underline-offset: 2px;
           -webkit-tap-highlight-color: transparent;
-        }
-        
-        /* Right chevron padding */
-        .sidebar-nav > ul > li.sidebar-group.chevron-right > span {
-          padding-right: calc(var(--_sidebar-inset, 20px) + 15px);
         }
         
         /* Touch device feedback */
@@ -49,8 +44,7 @@
           -webkit-tap-highlight-color: transparent;
         }
         
-        /* Right chevron - collapsed */
-        .sidebar-nav > ul > li.sidebar-group.chevron-right > span {
+        .sidebar-nav > ul > li.sidebar-group > span {
           background: no-repeat calc(100% - var(--_sidebar-inset, 20px)) calc(50% - 2.5px) / 6px 5px
               linear-gradient(45deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px),
             no-repeat calc(100% - var(--_sidebar-inset, 20px)) calc(50% + 2.5px) / 6px 5px
@@ -58,7 +52,7 @@
         }
         
         @media (hover: none) {
-          .sidebar-nav > ul > li.sidebar-group.chevron-right > span:active {
+          .sidebar-nav > ul > li.sidebar-group > span:active {
             background-color: rgba(11, 133, 215, 0.1);
             background-image: 
               linear-gradient(45deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4px),
@@ -85,8 +79,7 @@
           outline-offset: 2px;
         }
         
-        /* Right chevron - expanded */
-        .sidebar-nav > ul > li.sidebar-group.chevron-right.expanded > span {
+        .sidebar-nav > ul > li.sidebar-group.expanded > span {
           background: no-repeat calc(100% - var(--_sidebar-inset, 20px) - 4px) center / 5px 6px
               linear-gradient(225deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px),
             no-repeat calc(100% - var(--_sidebar-inset, 20px) + 1px) center / 5px 6px
@@ -94,7 +87,7 @@
         }
         
         @media (hover: none) {
-          .sidebar-nav > ul > li.sidebar-group.chevron-right.expanded > span:active {
+          .sidebar-nav > ul > li.sidebar-group.expanded > span:active {
             background-color: rgba(11, 133, 215, 0.1);
             background-image: 
               linear-gradient(225deg, transparent 2.75px, var(--color-mono-3, #ccc) 2.75px 4.25px, transparent 4.25px),
@@ -113,111 +106,96 @@
       `;
       document.head.appendChild(style);
     });
-
-    hook.doneEach(function () {
-      document
-        .querySelectorAll(".sidebar-nav > ul > li")
-        .forEach(function (node, index) {
-          if (node.classList.contains("sidebar-group")) {
-            return;
-          }
-
-          var ul = node.querySelector("ul");
-
-          if (!ul) {
-            return;
-          }
-
-          var span = document.createElement("span");
-          var sectionId = "sidebar-section-" + index;
-
-          // Handles both text nodes and elements like <strong>
-          span.textContent =
-            node.firstChild.textContent || node.firstChild.data || "";
-          span.setAttribute("role", "button");
-          span.setAttribute("tabindex", "0");
-          span.setAttribute("aria-expanded", "false");
-          span.setAttribute("aria-controls", sectionId);
-
-          ul.id = sectionId;
-
-          var toggleSection = function () {
-            var isCurrentlyCollapsed = ul.classList.contains("collapsed");
-
-            if (accordion) {
-              // Close all sections first
-              document
-                .querySelectorAll(".sidebar-nav > ul > li.sidebar-group")
-                .forEach(function (otherNode) {
-                  var otherUl = otherNode.querySelector("ul");
-                  var otherSpan = otherNode.querySelector(
-                    'span[role="button"]'
-                  );
-
-                  if (!otherUl || !otherSpan) {
-                    return;
-                  }
-
-                  otherUl.classList.add("collapsed");
-                  otherNode.classList.remove("expanded");
-                  otherSpan.setAttribute("aria-expanded", "false");
-                });
-
-              if (isCurrentlyCollapsed) {
-                ul.classList.remove("collapsed");
-                node.classList.add("expanded");
-                span.setAttribute("aria-expanded", "true");
+    
+    hook.doneEach(function() {
+      document.querySelectorAll(".sidebar-nav > ul > li").forEach(function(node, index) {
+        if (node.classList.contains('sidebar-group')) {
+          return;
+        }
+        
+        var ul = node.querySelector('ul');
+        
+        if (!ul) {
+          return;
+        }
+        
+        var span = document.createElement("span");
+        var sectionId = 'sidebar-section-' + index;
+        
+        // Handles both text nodes and elements like <strong>
+        span.textContent = node.firstChild.textContent || node.firstChild.data || '';
+        span.setAttribute('role', 'button');
+        span.setAttribute('tabindex', '0');
+        span.setAttribute('aria-expanded', 'false');
+        span.setAttribute('aria-controls', sectionId);
+        
+        ul.id = sectionId;
+        
+        var toggleSection = function() {
+          var isCurrentlyCollapsed = ul.classList.contains('collapsed');
+          
+          if (accordion) {
+            // Close all sections first
+            document.querySelectorAll(".sidebar-nav > ul > li.sidebar-group").forEach(function(otherNode) {
+              var otherUl = otherNode.querySelector('ul');
+              var otherSpan = otherNode.querySelector('span[role="button"]');
+              
+              if (!otherUl || !otherSpan) {
+                return;
               }
+              
+              otherUl.classList.add('collapsed');
+              otherNode.classList.remove('expanded');
+              otherSpan.setAttribute('aria-expanded', 'false');
+            });
+            
+            if (isCurrentlyCollapsed) {
+              ul.classList.remove('collapsed');
+              node.classList.add('expanded');
+              span.setAttribute('aria-expanded', 'true');
+            }
+          } else {
+            // Toggle without closing other sections
+            if (isCurrentlyCollapsed) {
+              ul.classList.remove('collapsed');
+              node.classList.add('expanded');
+              span.setAttribute('aria-expanded', 'true');
             } else {
-              // Toggle without closing other sections
-              if (isCurrentlyCollapsed) {
-                ul.classList.remove("collapsed");
-                node.classList.add("expanded");
-                span.setAttribute("aria-expanded", "true");
-              } else {
-                ul.classList.add("collapsed");
-                node.classList.remove("expanded");
-                span.setAttribute("aria-expanded", "false");
-              }
+              ul.classList.add('collapsed');
+              node.classList.remove('expanded');
+              span.setAttribute('aria-expanded', 'false');
             }
-          };
-
-          span.onclick = toggleSection;
-          span.onkeydown = function (e) {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              toggleSection();
-            }
-          };
-
-          node.firstChild.replaceWith(span);
-          ul.classList.add("collapsed");
-          node.classList.add("sidebar-group");
-
-          // Add chevron class based on position
-          if (chevronPosition === "right") {
-            node.classList.add("chevron-right");
           }
-        });
-
+        };
+        
+        span.onclick = toggleSection;
+        span.onkeydown = function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleSection();
+          }
+        };
+        
+        node.firstChild.replaceWith(span);
+        ul.classList.add('collapsed');
+        node.classList.add('sidebar-group');
+      });
+      
       var active = document.querySelector(".sidebar-nav li.active");
       if (active) {
         var parentList = active.parentElement;
         var parentNode = parentList.parentElement;
         var parentSpan = parentNode.querySelector('span[role="button"]');
-
+        
         if (parentList && parentNode && parentSpan) {
-          parentList.classList.remove("collapsed");
-          parentNode.classList.add("expanded");
-          parentSpan.setAttribute("aria-expanded", "true");
+          parentList.classList.remove('collapsed');
+          parentNode.classList.add('expanded');
+          parentSpan.setAttribute('aria-expanded', 'true');
         }
       }
     });
   }
 
   window.$docsify = window.$docsify || {};
-  window.$docsify.plugins = [].concat(
-    sidebarExpandCollapsePlugin,
-    window.$docsify.plugins || []
-  );
+  window.$docsify.plugins = [].concat(sidebarExpandCollapsePlugin, window.$docsify.plugins || []);
 })();
