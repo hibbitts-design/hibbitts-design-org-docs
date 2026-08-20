@@ -1,4 +1,4 @@
-- Open Course Hub
++ Open Course Hub
   - [Overview](02.opencoursehub/overview.md)
   - [Benefits](02.opencoursehub/benefits.md)
   - [Top 10 Features](02.opencoursehub/top-10-features.md)
@@ -13,7 +13,7 @@
   - [Integrating Grav with Moodle](02.opencoursehub/integrating-grav-with-moodle.md)
   - [MultiCourse Hub](02.opencoursehub/multicourse-hub.md)
   - [Share Your Feedback](02.opencoursehub/share-your-feedback.md)
-- Open Publishing Space
++ Open Publishing Space
   - [Overview](04.openpublishingspace/overview.md)
   - [Workflow Diagram](04.openpublishingspace/work-flow.md)
   - [Get Ready and Download](04.openpublishingspace/getting-ready.md)
@@ -23,7 +23,7 @@
   - [Chromeless Display How To Videos](04.openpublishingspace/chromeless-display-configuration.md)
   - [Tips and Tricks](04.openpublishingspace/tips-and-tricks.md)
   - [Share Your Feedback](04.openpublishingspace/share-your-feedback.md)
-- Learn2 with Git Sync
++ Learn2 with Git Sync
   - [Overview](05.learn2withgitsync/overview.md)
   - [Benefits](05.learn2withgitsync/benefits.md)
   - [Workflow Diagram](05.learn2withgitsync/work-flow.md)
@@ -33,18 +33,18 @@
   - [Install and Configuration Video](05.learn2withgitsync/install-configure-video.md)
   - [Tips and Tricks](05.learn2withgitsync/tips-and-tricks.md)
   - [Share Your Feedback](05.learn2withgitsync/share-your-feedback.md)
-- Markdown and Git Services
++ Markdown and Git Services
   - [Overview](07.markdown-and-git-services/overview.md)
   - [Markdown](07.markdown-and-git-services/markdown.md)
   - [Git and Git-based Services](07.markdown-and-git-services/git.md)
   - [GitHub Desktop](07.markdown-and-git-services/github-desktop.md)
-- GitHub & GitHub Desktop
++ GitHub & GitHub Desktop
   - [Overview](08.github-githubdesktop/overview.md)
   - [Getting Ready](08.github-githubdesktop/getting-ready.md)
   - [Setup a GitHub Repository Clone](08.github-githubdesktop/setup-a-github-repo.md)
   - [Editing Local Repository Content](08.github-githubdesktop/locally-editing-your-repo.md)
   - [Setup and Edit Video](08.github-githubdesktop/setup-edit-video.md)
-- GitLab & GitHub Desktop
++ GitLab & GitHub Desktop
   - [Overview](09.gitlab-githubdesktop/overview.md)
   - [Getting Ready](09.gitlab-githubdesktop/getting-ready.md)
   - [Cloning a GitLab Repository](09.gitlab-githubdesktop/cloning-a-gitlab-repo.md)
