@@ -49,3 +49,8 @@
   - [Getting Ready](09.gitlab-githubdesktop/getting-ready.md)
   - [Cloning a GitLab Repository](09.gitlab-githubdesktop/cloning-a-gitlab-repo.md)
   - [Editing Local Repository Content](09.gitlab-githubdesktop/locally-editing-your-repo.md)
+
+<style>
+:root {
+  --sidebar-group-title-font-weight : var(--font-weight);
+</style>
